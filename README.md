@@ -1,2 +1,0 @@
-# stoplight-swagger
-stoplight-swagger
