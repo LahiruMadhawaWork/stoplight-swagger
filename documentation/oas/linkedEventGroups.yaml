@@ -1,0 +1,208 @@
+openapi: 3.0.0
+info:
+  title: assystREST
+  version: v0.1
+servers:
+  - url: http://vm-tst-con-01.kerberos.axiossystems.local:8080/assystREST/v2
+  - url: https://localhost:8080/assystREST/v2
+paths:
+  /linkedEventGroups:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/resource-schema-xml'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+      description: Get a list of linkedEventGroups filtered by Query Parameters
+      operationId: GET_linkedEventGroups
+      parameters:
+        - name: allRecords
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: disableExceptionOnMaxRecords
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: indexQuery
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: linkReasonId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: linkedEventsId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: maxRecords
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: fields
+          in: query
+          description: Identifies the properties of the resource that are to be retrieved, including expansion of nested entities.
+          schema:
+            type: string
+    post:
+      responses:
+        '201':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/resource-schema-xml'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Create a new instance of a linkedEventGroup
+      operationId: POST_linkedEventGroups
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/resource-schema-xml'
+          application/json:
+            schema:
+              type: string
+        required: false
+      parameters:
+        - name: fields
+          in: query
+          description: Identifies the properties of the resource that are to be retrieved, including expansion of nested entities.
+          schema:
+            type: string
+  /linkedEventGroups/schema:
+    get:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+      description: Get the XML Schema for schema entities
+      operationId: GET_linkedEventGroups-schema
+  /linkedEventGroups/raml:
+    get:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+      description: Get the detailed RAML Description for raml entities
+      operationId: GET_linkedEventGroups-raml
+  /linkedEventGroups/{id}:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/resource-schema-xml'
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '404':
+          description: ''
+      description: Get the details of a linkedEventGroup
+      operationId: GET_linkedEventGroups-id
+      parameters:
+        - name: fields
+          in: query
+          description: Identifies the properties of the resource that are to be retrieved, including expansion of nested entities.
+          schema:
+            type: string
+    post:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/resource-schema-xml'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Update the details of a linkedEventGroup
+      operationId: POST_linkedEventGroups-id
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/resource-schema-xml'
+          application/json:
+            schema:
+              type: string
+        required: false
+      parameters:
+        - name: fields
+          in: query
+          description: Identifies the properties of the resource that are to be retrieved, including expansion of nested entities.
+          schema:
+            type: string
+    delete:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Delete a linkedEventGroup
+      operationId: DELETE_linkedEventGroups-id
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the resource
+components:
+  schemas:
+    resource-schema-xml:
+      type: object
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

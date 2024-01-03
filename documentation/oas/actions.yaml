@@ -1,0 +1,240 @@
+openapi: 3.0.0
+info:
+  title: assystREST
+  version: v0.1
+servers:
+  - url: http://vm-tst-con-01.kerberos.axiossystems.local:8080/assystREST/v2
+  - url: https://localhost:8080/assystREST/v2
+paths:
+  /actions/schema:
+    get:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+      description: Get the XML Schema for schema entities
+      operationId: GET_actions-schema
+  /actions/raml:
+    get:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+      description: Get the detailed RAML Description for raml entities
+      operationId: GET_actions-raml
+  /actions/{id}:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/resource-schema-xml'
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '404':
+          description: ''
+      description: Get the details of a action
+      operationId: GET_actions-id
+      parameters:
+        - name: fields
+          in: query
+          description: Identifies the properties of the resource that are to be retrieved, including expansion of nested entities.
+          schema:
+            type: string
+    post:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/resource-schema-xml'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Update the details of a action
+      operationId: POST_actions-id
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/resource-schema-xml'
+          application/json:
+            schema:
+              type: string
+        required: false
+      parameters:
+        - name: fields
+          in: query
+          description: Identifies the properties of the resource that are to be retrieved, including expansion of nested entities.
+          schema:
+            type: string
+    delete:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Delete a action
+      operationId: DELETE_actions-id
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the resource
+  /actions/{id}/attachments:
+    get:
+      responses:
+        '200':
+          description: ''
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+      description: Retrieve list of attachments for the parent resource
+      operationId: GET_actions-id-attachments
+    post:
+      responses:
+        '201':
+          description: ''
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Add attachment to the parent resource
+      operationId: POST_actions-id-attachments
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the resource
+  /actions/{id}/attachments/{attachmentId}:
+    get:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '404':
+          description: ''
+      description: Get attachment from parent resource
+      operationId: GET_actions-id-attachments-attachmentId
+    delete:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Delete attachment from parent resource
+      operationId: DELETE_actions-id-attachments-attachmentId
+    parameters:
+      - name: attachmentId
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the attachment
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the resource
+  /actions/actionHistory/{id}:
+    get:
+      responses:
+        default:
+          description: ''
+      description: 'Search for history event actions including the action types '
+      operationId: GET_actions-actionHistory-id
+      parameters:
+        - name: fields
+          in: query
+          description: A list of object properties to use for field expansion or field filtering. Field expansion widens the data returned, field filtering removes properties
+          schema:
+            type: string
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /actions/export:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Export the events to a CSV file
+      operationId: GET_actions-export
+      parameters:
+        - name: eventId
+          in: query
+          schema:
+            type: integer
+        - name: localeStr
+          in: query
+          schema:
+            type: string
+        - name: timeZoneStr
+          in: query
+          schema:
+            type: string
+  /actions/importProfiles/{importProfile}:
+    post:
+      responses:
+        default:
+          description: ''
+      operationId: POST_actions-importProfiles-importProfile
+    parameters:
+      - name: importProfile
+        in: path
+        required: true
+        schema:
+          type: string
+components:
+  schemas:
+    resource-schema-xml:
+      type: object
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

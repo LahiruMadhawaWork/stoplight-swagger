@@ -1,0 +1,1574 @@
+openapi: 3.0.0
+info:
+  title: assystREST
+  version: v0.1
+servers:
+  - url: http://vm-tst-con-01.kerberos.axiossystems.local:8080/assystREST/v2
+  - url: https://localhost:8080/assystREST/v2
+paths:
+  /events:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/resource-schema-xml'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+      description: Get a list of events filtered by Query Parameters
+      operationId: GET_events
+      parameters:
+        - name: $orderby
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: $skip
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: $top
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: actionAffectedUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: actionAffectedUserName
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: actionAffectedUsers
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: actionDelegatorUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: actionOrAdditionalAffectedUsers
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: actionType
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: actioningServiceDepartment
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: actioningUser
+          in: query
+          required: true
+          description: This lookup parameter is deprecated
+          schema:
+            type: integer
+        - name: actioningUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: affectedOrReportingUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: affectedUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: affectedUserName
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: alertStatusType
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: alertStatusTypeEnum
+          in: query
+          required: true
+          schema:
+            enum:
+              - NO_ALERT
+              - GREEN
+              - BLUE
+              - RED
+            type: string
+        - name: allAffectedUsers
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: allRecords
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: archiveEventSearch
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: assignedServDeptId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: assignedUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: assystServiceId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: assystsearchactiondesc
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: assystsearchalltext
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: assystsearcheventdesc
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: assystsearchterms
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: attachedProcessId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: attachedProcessSc
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: authorisation
+          in: query
+          required: true
+          description: This lookup parameter is deprecated
+          schema:
+            type: boolean
+        - name: authorisingUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: branchId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: buildingId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: bundleEventId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: bundleRef
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: bundleType
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: callbackDate
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/date'
+        - name: callbackRequired
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: categoryId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: causeCategoryId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: causeItemId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: chargeCodeId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: companyId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: conflictingImplementationStage
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: containsAttachedProcess
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: costCentreId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: currentStageId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: customColumns.accesories required
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: customColumns.business impact
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: customColumns.delivery method (shared field)
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: customColumns.extra info
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: customColumns.issue type (shared field)
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: customColumns.manual required
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: customColumns.risk_failure_exposure
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: customColumns.risk_imp_duration
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: customColumns.risk_prep_effort
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: customColumns.risk_resources
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: customColumns.risk_users
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: dateActioned
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/date'
+        - name: daysFromEventClosure
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: delegateUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: departmentId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: disableExceptionOnMaxRecords
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: divisionId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: downFlag
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: entityDefinitionId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: entityDefinitionType
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: eventCsg
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: eventGroupId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: eventId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: eventRef
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: eventRefRange
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: eventStatus
+          in: query
+          required: true
+          schema:
+            enum:
+              - OPEN
+              - CLOSED
+              - PENDING
+              - SUBMITTED
+            type: string
+        - name: eventType
+          in: query
+          required: true
+          schema:
+            enum:
+              - INCIDENT
+              - CHANGE
+              - PROBLEM
+              - NORMALTASK
+              - DECISIONTASK
+              - AUTHORISATIONTASK
+              - SERVICEREQUEST
+              - ORDER
+            type: string
+        - name: excludedEventId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: excludeotherparams
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: firstRecord
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: implementationStageEndDate
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/date'
+        - name: implementationStageStartDate
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/date'
+        - name: includeDelegatingUser
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: includeReviewingUser
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: includeStandardCUResultsInAdvancedCUQuery
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: includeZeroActionEvents
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: indexQuery
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: itemAGenericClass
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: itemAId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: itemAKeyA
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: itemAKeyB
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: itemAProduct
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: itemAProductClass
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: itemAProductVersion
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: itemASerialNumber
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: itemASystem
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: itemBGenericClass
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: itemBId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: itemBKeyA
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: itemBKeyB
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: itemBProduct
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: itemBProductClass
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: itemBProductVersion
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: itemBSerialNumber
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: itemBSystem
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: knowledgeProcedure
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: lastActionOnly
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: linkedItems
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: linkedItemsGenericClass
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: linkedItemsKeyA
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: linkedItemsKeyB
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: linkedItemsProduct
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: linkedItemsProductClass
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: linkedItemsProductVersion
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: linkedItemsSerialNumber
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: linkedItemsSystem
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: locked
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: loggedDate
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/date'
+        - name: loggingContactUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: loggingServDeptId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: loggingUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: majorCategoryId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: majorIncident
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: maxRecords
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: olaResolutionBreach
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: olaResponseBreach
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: olaResponseOutstanding
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: onlyOwnMajorIncidents
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: orderByEventIdAsc
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: orderByLoggedDateDesc
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: orderId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: orderRef
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: parentEventId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: phaseId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: priorityDerivedId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: priorityId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: project
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: queryProfileId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: receiveSourceType
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: remarks
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: repeatCallsForIncidentId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: reportingUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: responsibleBServDeptId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: responsibleBUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: responsibleServDeptId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: responsibleUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: rfcEndDate
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/date'
+        - name: rfcRequiredBy
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/date'
+        - name: rfcScheduledBy
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/date'
+        - name: roomId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: runTimeActionAffectedUsers
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: runTimeAllAffectedUsers
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: searchAllItems
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: sectionId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: seriousnessId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: servDeptAssignedOnly
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: serviceCost
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: serviceOfferingId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: serviceTime
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: shortDescription
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: siteAreaId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: siteId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: siteVisitRequired
+          in: query
+          required: true
+          schema:
+            enum:
+              - REQUIRED
+              - NOT_REQUIRED
+              - NOT_SPECIFIED
+            type: string
+        - name: slaEscalationLevel
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: slaId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: slaResolutionBreach
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: slaResponseBreach
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: sortBy
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: state
+          in: query
+          required: true
+          schema:
+            enum:
+              - ASSESSED
+              - BACKED_OUT
+              - CANCELLED
+              - REGISTERED
+              - KNOWN_ERROR
+              - FAILED
+              - HOLD
+              - REJECTED
+              - KNOWN_PROBLEM
+              - LOGGED
+              - IMPLEMENTED
+              - PROCEED
+              - PROBLEM
+              - ROUTINE_INCIDENT
+              - TESTED
+              - BUILT
+              - AUTHORISED
+              - VERIFIED
+              - REVIEWED
+              - CHANGE
+              - NOT_AUTHORISED
+              - KNOWLEDGE_SOLVE
+              - WITHDRAWN
+              - RESCHEDULED
+            type: string
+        - name: supplierAcknowledgementRequired
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: supplierAssigned
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: supplierId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: supplierReference
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: supplierReferenceRestrictToExactMatch
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: supplierResolutionBreach
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: supplierResponseBreach
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: supplierSla
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: tasksForParentId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: technicalServDeptId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: technicalUserId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: templateProcess
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: territoryId
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: treatAnyAsOwn
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: unacknowledgedFutureActions
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: userReference
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: userReferenceRestrictToExactMatch
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: userStatus
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: workManagerQuery
+          in: query
+          required: true
+          schema:
+            type: boolean
+        - name: fields
+          in: query
+          description: Identifies the properties of the resource that are to be retrieved, including expansion of nested entities.
+          schema:
+            type: string
+    post:
+      responses:
+        '201':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/resource-schema-xml'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Create a new instance of a event
+      operationId: POST_events
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/resource-schema-xml'
+          application/json:
+            schema:
+              type: string
+        required: false
+      parameters:
+        - name: fields
+          in: query
+          description: Identifies the properties of the resource that are to be retrieved, including expansion of nested entities.
+          schema:
+            type: string
+  /events/searchResultCount:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/resource-schema-xml'
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '404':
+          description: ''
+      description: Get the details of a searchResultCount
+      operationId: GET_events-searchResultCount
+      parameters:
+        - name: fields
+          in: query
+          description: Identifies the properties of the resource that are to be retrieved, including expansion of nested entities.
+          schema:
+            type: string
+    post:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/resource-schema-xml'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Update the details of a searchResultCount
+      operationId: POST_events-searchResultCount
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/resource-schema-xml'
+          application/json:
+            schema:
+              type: string
+        required: false
+      parameters:
+        - name: fields
+          in: query
+          description: Identifies the properties of the resource that are to be retrieved, including expansion of nested entities.
+          schema:
+            type: string
+    delete:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Delete a searchResultCount
+      operationId: DELETE_events-searchResultCount
+    parameters: []
+  /events/schema:
+    get:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+      description: Get the XML Schema for schema entities
+      operationId: GET_events-schema
+  /events/raml:
+    get:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+      description: Get the detailed RAML Description for raml entities
+      operationId: GET_events-raml
+  /events/{id}:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/resource-schema-xml'
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '404':
+          description: ''
+      description: Get the details of a event
+      operationId: GET_events-id
+      parameters:
+        - name: fields
+          in: query
+          description: Identifies the properties of the resource that are to be retrieved, including expansion of nested entities.
+          schema:
+            type: string
+    post:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/resource-schema-xml'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Update the details of a event
+      operationId: POST_events-id
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/resource-schema-xml'
+          application/json:
+            schema:
+              type: string
+        required: false
+      parameters:
+        - name: fields
+          in: query
+          description: Identifies the properties of the resource that are to be retrieved, including expansion of nested entities.
+          schema:
+            type: string
+    delete:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Delete a event
+      operationId: DELETE_events-id
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the resource
+  /events/{id}/attachments:
+    get:
+      responses:
+        '200':
+          description: ''
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+      description: Retrieve list of attachments for the parent resource
+      operationId: GET_events-id-attachments
+    post:
+      responses:
+        '201':
+          description: ''
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Add attachment to the parent resource
+      operationId: POST_events-id-attachments
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the resource
+  /events/{id}/attachments/{attachmentId}:
+    get:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '404':
+          description: ''
+      description: Get attachment from parent resource
+      operationId: GET_events-id-attachments-attachmentId
+    delete:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '409':
+          description: ''
+      description: Delete attachment from parent resource
+      operationId: DELETE_events-id-attachments-attachmentId
+    parameters:
+      - name: attachmentId
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the attachment
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the resource
+  /events/alerts:
+    get:
+      responses:
+        default:
+          description: ''
+      description: 'Returns alerts for an event. The event used to determine which alerts to retrieve is built using specified lookup parameters. Current supported lookup parameters are: affectedUser, buildingId, roomId, sectionId, departmentId'
+      operationId: GET_events-alerts
+  /events/definition:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Returns the system entity definition for this resource.
+      operationId: GET_events-definition
+      parameters:
+        - name: locale
+          in: query
+          schema:
+            type: string
+        - name: flattenGroups
+          in: query
+          schema:
+            type: boolean
+        - name: fields
+          in: query
+          description: A list of object properties to use for field expansion or field filtering. Field expansion widens the data returned, field filtering removes properties
+          schema:
+            type: string
+        - name: customDefinition
+          in: query
+          schema:
+            type: string
+  /events/export:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Export the events to a CSV file. (Accept 'text/csv' content type.) Supply selectedEventIds parameter to export specific events, or queryProfileId parameter to export a full query.
+      operationId: GET_events-export
+      parameters:
+        - name: columnProfileId
+          in: query
+          schema:
+            type: integer
+        - name: localeStr
+          in: query
+          schema:
+            type: string
+        - name: timeZoneStr
+          in: query
+          schema:
+            type: string
+        - name: selectedEventIds
+          in: query
+          schema:
+            type: integer
+        - name: queryProfileId
+          in: query
+          schema:
+            type: integer
+        - name: columnNames
+          in: query
+          schema:
+            type: string
+  /events/queryProfiles/{id}:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Search for events using the specified query profile ID, optinally specifiying an array of prepopulation fields
+      operationId: GET_events-queryProfiles-id
+      parameters:
+        - name: fields
+          in: query
+          description: A list of object properties to use for field expansion or field filtering. Field expansion widens the data returned, field filtering removes properties
+          schema:
+            type: string
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /events/reference/{id}:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Retrieves and event using the reference id of the event
+      operationId: GET_events-reference-id
+      parameters:
+        - name: fields
+          in: query
+          description: A list of object properties to use for field expansion or field filtering. Field expansion widens the data returned, field filtering removes properties
+          schema:
+            type: string
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /events/remainingChangeIds:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Returns a count of remaining number of change events (changes, service requests, orders) that can be logged before the application breaks
+      operationId: GET_events-remainingChangeIds
+  /events/remainingProblemIds:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Returns a count of remaining number of problems that can be logged before the application breaks
+      operationId: GET_events-remainingProblemIds
+  /events/reserve:
+    post:
+      responses:
+        default:
+          description: ''
+      description: Reserves an event reference for use in logging a subsequent event
+      operationId: POST_events-reserve
+  /events/reserve/schema:
+    get:
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+      description: Get the XML Schema for schema entities
+      operationId: GET_events-reserve-schema
+  /events/subtype:
+    get:
+      responses:
+        default:
+          description: ''
+      operationId: GET_events-subtype
+      parameters:
+        - name: fields
+          in: query
+          description: A list of object properties to use for field expansion or field filtering. Field expansion widens the data returned, field filtering removes properties
+          schema:
+            type: string
+  /events/{eventId}/actionsOfType/{actionTypeId}:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Returns actions of a given type that have been taken against an event
+      operationId: GET_events-eventId-actionsOfType-actionTypeId
+      parameters:
+        - name: fields
+          in: query
+          description: A list of object properties to use for field expansion or field filtering. Field expansion widens the data returned, field filtering removes properties
+          schema:
+            type: string
+    parameters:
+      - name: eventId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actionTypeId
+        in: path
+        required: true
+        schema:
+          type: string
+  /events/{eventTypeOrIncidentId}/definition:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Returns the system entity definition for this resource
+      operationId: GET_events-eventTypeOrIncidentId-definition
+      parameters:
+        - name: locale
+          in: query
+          schema:
+            type: string
+        - name: flattenGroups
+          in: query
+          schema:
+            type: boolean
+        - name: fields
+          in: query
+          description: A list of object properties to use for field expansion or field filtering. Field expansion widens the data returned, field filtering removes properties
+          schema:
+            type: string
+        - name: serviceOfferingId
+          in: query
+          schema:
+            type: integer
+        - name: serviceOffering
+          in: query
+          schema:
+            type: string
+        - name: includeReadOnlyProperties
+          in: query
+          schema:
+            type: boolean
+    parameters:
+      - name: eventTypeOrIncidentId
+        in: path
+        required: true
+        schema:
+          type: string
+  /events/{id}/additionalAffectedUsers:
+    post:
+      responses:
+        default:
+          description: ''
+      description: Adds or removes additional affected users from an event without necessarily requiring full Event modification privileges. (Instead uses Event Follower privileges).
+      operationId: POST_events-id-additionalAffectedUsers
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /events/{id}/alerts:
+    get:
+      responses:
+        default:
+          description: ''
+      operationId: GET_events-id-alerts
+      parameters:
+        - name: fields
+          in: query
+          description: A list of object properties to use for field expansion or field filtering. Field expansion widens the data returned, field filtering removes properties
+          schema:
+            type: string
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /events/{id}/availableActionTypes/{actioningServiceDepartment}:
+    get:
+      responses:
+        default:
+          description: ''
+      operationId: GET_events-id-availableActionTypes-actioningServiceDepartment
+      parameters:
+        - name: fields
+          in: query
+          description: A list of object properties to use for field expansion or field filtering. Field expansion widens the data returned, field filtering removes properties
+          schema:
+            type: string
+        - name: onlyAvailableOnPopup
+          in: query
+          schema:
+            type: boolean
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actioningServiceDepartment
+        in: path
+        required: true
+        schema:
+          type: string
+  /events/{id}/createRepeatEvent:
+    post:
+      responses:
+        default:
+          description: ''
+      operationId: POST_events-id-createRepeatEvent
+      parameters:
+        - name: fields
+          in: query
+          description: A list of object properties to use for field expansion or field filtering. Field expansion widens the data returned, field filtering removes properties
+          schema:
+            type: string
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+components:
+  schemas:
+    resource-schema-xml:
+      type: object
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}
